@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.BarsuxExperimental" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">@color/appPurple</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/appPurple</item>
+    </style>
+</resources>

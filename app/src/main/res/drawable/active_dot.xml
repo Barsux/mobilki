@@ -1,0 +1,9 @@
+<!-- res/drawable/active_dot.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <size
+        android:width="42dp"
+        android:height="8dp" />
+    <solid android:color="@color/appPurple" />
+    <corners android:radius="50dp" />
+</shape>

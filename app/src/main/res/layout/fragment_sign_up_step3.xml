@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
+
+    <!-- Назад + Заголовок -->
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/back"
+        android:contentDescription="@string/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up_title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Аватар -->
+    <FrameLayout
+        android:id="@+id/avatarContainer"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/avatarPlaceholder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/avatar_placeholder"
+            android:contentDescription="@string/avatar_description"
+            android:scaleType="fitCenter"/>
+
+        <ImageView
+            android:id="@+id/addAvatarIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/add"
+            android:contentDescription="@string/add_photo"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="4dp"/>
+    </FrameLayout>
+
+    <!-- Описание -->
+    <TextView
+        android:id="@+id/avatarDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/avatar_decription"
+        android:textColor="@color/gray_700"
+        android:textSize="14sp"
+        android:fontFamily="@font/montserrat_medium"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintTop_toBottomOf="@id/avatarContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Лейбл ВУ -->
+    <TextView
+        android:id="@+id/licenseLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/driver_id"
+        android:textColor="@color/gray_700"
+        android:textSize="14sp"
+        android:fontFamily="@font/montserrat_medium"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/avatarDescription"/>
+
+    <!-- Ввод ВУ -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/licenseNumberInputLayout"
+        style="@style/CustomTextInputStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="@string/driver_id_example"
+        android:textColorHint="@color/gray_700"
+        app:boxBackgroundMode="outline"
+        app:layout_constraintTop_toBottomOf="@id/licenseLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/licenseNumberEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textColor="@color/appPurple"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Лейбл Дата -->
+    <TextView
+        android:id="@+id/issueDateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date_of_issue"
+        android:textColor="@color/gray_700"
+        android:textSize="14sp"
+        android:fontFamily="@font/montserrat_medium"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/licenseNumberInputLayout"/>
+
+    <!-- Ввод даты -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/issueDateInputLayout"
+        style="@style/CustomTextInputStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="@string/ddmmyyyy"
+        android:textColorHint="@color/gray_700"
+        app:startIconDrawable="@drawable/calendar"
+        app:boxBackgroundMode="outline"
+        app:layout_constraintTop_toBottomOf="@id/issueDateLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/issueDateEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:textColor="@color/appPurple"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Текст над кнопкой ВУ -->
+    <TextView
+        android:id="@+id/licensePhotoLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/upload_driver_id"
+        android:textColor="@color/gray_700"
+        android:textSize="14sp"
+        android:fontFamily="@font/montserrat_medium"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintTop_toBottomOf="@id/issueDateInputLayout"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- Блок: ВУ -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/uploadLicenseBlock"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintTop_toBottomOf="@id/licensePhotoLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/uploadLicensePhotoButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/upload"
+            android:background="@drawable/rounded_border_gray"
+            android:contentDescription="@string/upload_driver_id_desc"
+            android:scaleType="centerInside"
+            android:padding="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/upload_photo"
+            android:textColor="@color/gray_700"
+            android:fontFamily="@font/montserrat_medium"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/uploadLicensePhotoButton"
+            app:layout_constraintTop_toTopOf="@id/uploadLicensePhotoButton"
+            app:layout_constraintBottom_toBottomOf="@id/uploadLicensePhotoButton"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Текст над кнопкой Паспорт -->
+    <TextView
+        android:id="@+id/passportPhotoLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/upload_id"
+        android:textColor="@color/gray_700"
+        android:textSize="14sp"
+        android:fontFamily="@font/montserrat_medium"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintTop_toBottomOf="@id/uploadLicenseBlock"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- Блок: Паспорт -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/uploadPassportBlock"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintTop_toBottomOf="@id/passportPhotoLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/uploadPassportPhotoButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/upload"
+            android:background="@drawable/rounded_border_gray"
+            android:contentDescription="@string/upload_id_hint"
+            android:scaleType="centerInside"
+            android:padding="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/upload_photo"
+            android:textColor="@color/gray_700"
+            android:fontFamily="@font/montserrat_medium"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/uploadPassportPhotoButton"
+            app:layout_constraintTop_toTopOf="@id/uploadPassportPhotoButton"
+            app:layout_constraintBottom_toBottomOf="@id/uploadPassportPhotoButton"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Кнопка Далее -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/nextButton"
+        style="@style/PurpleButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
