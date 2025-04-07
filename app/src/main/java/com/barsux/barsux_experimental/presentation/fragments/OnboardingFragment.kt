@@ -11,8 +11,11 @@ import com.barsux.barsux_experimental.presentation.adapters.OnboardingAdapter
 import com.barsux.barsux_experimental.presentation.adapters.OnboardingItem
 import com.google.android.material.button.MaterialButton
 import androidx.fragment.app.commit
+import com.barsux.barsux_experimental.common.OnboardingManager
 import com.barsux.barsux_experimental.presentation.fragments.SignInUpFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     private lateinit var viewPager: ViewPager2
@@ -23,7 +26,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
     private val items = listOf(
         OnboardingItem(R.drawable.onboarding1, "Аренда автомобилей", "Открой для себя удобный и доступный способ передвижения"),
         OnboardingItem(R.drawable.onboarding2, "Безопасно и удобно", "Арендуй автомобиль и наслаждайся его удобством"),
-        OnboardingItem(R.drawable.onboarding3, "Лучшие предложения", "Выбирай среди сотен авто", isLast = true)
+        OnboardingItem(R.drawable.onboarding3, "Лучшие предложения", "Выбирай среди сотен авто\n ", isLast = true)
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,6 +58,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
             if (nextItem < items.size) {
                 viewPager.currentItem = nextItem
             } else {
+                OnboardingManager.setOnboardingCompleted(requireContext())
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.fragment_container, SignInUpFragment())
                     .addToBackStack(null)
@@ -63,6 +67,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         }
     }
     private fun navigateToSignIn() {
+        OnboardingManager.setOnboardingCompleted(requireContext())
         parentFragmentManager.commit {
             replace(R.id.fragment_container, SignInUpFragment())
             addToBackStack(null)

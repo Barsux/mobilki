@@ -44,13 +44,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/avatarPlaceholder"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/avatar_placeholder"
-            android:contentDescription="@string/avatar_description"
-            android:scaleType="fitCenter"/>
+            app:shapeAppearanceOverlay="@style/CircleImageShape"
+            android:background="@drawable/avatar_border"
+            android:contentDescription="@string/avatar"
+            android:layout_gravity="center"/>
 
         <ImageView
             android:id="@+id/addAvatarIcon"
@@ -143,6 +146,7 @@
         android:textColorHint="@color/gray_700"
         app:startIconDrawable="@drawable/calendar"
         app:boxBackgroundMode="outline"
+        app:endIconMode="custom"
         app:layout_constraintTop_toBottomOf="@id/issueDateLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -195,6 +199,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
+            android:id="@+id/driver_id_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -207,6 +212,18 @@
             app:layout_constraintBottom_toBottomOf="@id/uploadLicensePhotoButton"
             app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/uploadDriverId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Загрузите фото"
+        android:textColor="@color/error"
+        android:textSize="12sp"
+        android:fontFamily="@font/montserrat_medium"
+        android:visibility="gone"
+        android:layout_marginStart="40dp"
+        app:layout_constraintTop_toBottomOf="@id/uploadLicenseBlock"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Текст над кнопкой Паспорт -->
     <TextView
@@ -219,7 +236,7 @@
         android:fontFamily="@font/montserrat_medium"
         android:layout_marginTop="24dp"
         android:layout_marginStart="24dp"
-        app:layout_constraintTop_toBottomOf="@id/uploadLicenseBlock"
+        app:layout_constraintTop_toBottomOf="@id/uploadDriverId"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <!-- Блок: Паспорт -->
@@ -249,6 +266,7 @@
 
         <TextView
             android:layout_width="0dp"
+            android:id="@+id/id_text"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="@string/upload_photo"
@@ -260,6 +278,18 @@
             app:layout_constraintBottom_toBottomOf="@id/uploadPassportPhotoButton"
             app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/uploadId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Загрузите фото"
+        android:textColor="@color/error"
+        android:textSize="12sp"
+        android:fontFamily="@font/montserrat_medium"
+        android:visibility="gone"
+        android:layout_marginStart="40dp"
+        app:layout_constraintTop_toBottomOf="@id/uploadPassportBlock"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Кнопка Далее -->
     <com.google.android.material.button.MaterialButton

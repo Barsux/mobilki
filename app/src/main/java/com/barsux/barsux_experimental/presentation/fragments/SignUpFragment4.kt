@@ -4,22 +4,47 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.barsux.barsux_experimental.R
+import com.barsux.barsux_experimental.databinding.FragmentSignUpStep4Binding
+import com.barsux.barsux_experimental.presentation.viewmodels.SignUpViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * Экран авторизации и регистрации пользователя.
- * Используется для входа в систему или создания нового аккаунта.
- */
+
+
+@AndroidEntryPoint
 class SignUpFragment4 : Fragment() {
 
+    private var _binding: FragmentSignUpStep4Binding? = null
+    private val binding get() = _binding!!
+    private val viewModel: SignUpViewModel by activityViewModels()
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_sign_up_step4, container, false)
+        _binding = FragmentSignUpStep4Binding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    // Здесь ты можешь добавить обработку кнопок, вводов и т.д.
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.nextButton.setOnClickListener {
+            viewModel.register(viewLifecycleOwner.lifecycleScope) {
+                Toast.makeText(requireContext(), "Вы успешно зарегистрировались", Toast.LENGTH_SHORT).show()
+
+                // Можно переходить на главный экран или логин
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, SignInFragment())
+                    .commit()
+            }
+        }
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

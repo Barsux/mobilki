@@ -44,4 +44,17 @@
     <string name="forgot_password">Забыли пароль?</string>
     <string name="google">Google</string>
     <string name="enter_via_google">Войти через Google</string>
+    <string name="do_consent">Подтвердите согласие</string>
+    <string name="get_sex">Выберите пол</string>
+    <string name="male">Мужской</string>
+    <string name="female">Женский</string>
+    <string name="sex">Пол</string>
+    <string name="birth_date">Дата рождения</string>
+    <string name="enter_middlename">Введите отчество</string>
+    <string name="middlename">Отчество</string>
+    <string name="enter_first_name">Введите имя</string>
+    <string name="first_name">Имя</string>
+    <string name="enter_last_name">Введите фамилию</string>
+    <string name="last_name">Фамилия</string>
+    <string name="default_web_client_id">963547212328-rf0cuidab418pmd7ar2pdgf7tvtmk32k.apps.googleusercontent.com</string>
 </resources>
